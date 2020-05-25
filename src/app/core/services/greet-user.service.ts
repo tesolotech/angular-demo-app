@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { GreetUser } from './greet-user';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { GreetUser } from '../models/greet-user';
 
 
 @Injectable({
@@ -10,13 +10,19 @@ import { throwError } from 'rxjs';
 })
 export class GreetUserService {
 
-  private serverUrl = 'http://localhost:3000/api/message';  // URL to web api
+  private serverUrl = 'http://localhost:3000';  // URL to web api
 
   constructor( private http: HttpClient) { }
 
   getMessage() {
-    return this.http.get<GreetUser>(this.serverUrl).pipe(catchError(this.handleError));
+    return this.http.get<GreetUser>(this.serverUrl + '/api/message').pipe(catchError(this.handleError));
   }
+
+  // http://localhost:3000/api/users
+  GetAllUser() {
+    return this.http.get(this.serverUrl + '/api/users').pipe(catchError(this.handleError));
+  }
+
 
 private handleError(error: HttpErrorResponse) {
   if (error.error instanceof ErrorEvent) {

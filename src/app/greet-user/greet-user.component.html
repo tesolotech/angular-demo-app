@@ -2,4 +2,45 @@
   greet-user works!
 </p>
 <hr>
+<h2>Sever API call</h2>
 <p>{{message.message}}</p>
+<hr>
+<div>
+  <h2>Get User List</h2>
+  <table>
+    <tr>
+      <th *ngFor="let header of TableHeader">{{header}}</th>
+    </tr>
+    <tr *ngFor="let users of UserList">
+      <!-- <td *ngFor="let header of TableHeader"> {{users[header]}} </td> -->
+      <td>{{'+91 '+users.mobile}}</td>
+      <td>{{users.createdAt | date}}</td>
+      <td>{{users.updatedAt | date}}</td>
+    </tr>
+  </table>
+</div>
+
+<div>
+  <h2>Two way data binding</h2>
+  <input type="text" placeholder="Enter text here.." [(ngModel)]="inputValue">
+  {{inputValue}}
+</div>
+
+<div>
+  <h2>Structural Directive</h2>
+  <div *ngIf="DisplayPermision; then thenBlock; else elseBlock" ></div>
+  <ng-template #thenBlock>
+    <h1>This is ng-template directives then parts</h1>
+  </ng-template>
+  <ng-template #elseBlock>
+    <h1>This is ng-template directives of else part</h1>
+  </ng-template>
+
+  <div [ngSwitch] = "colorName">
+    <p *ngSwitchCase="'red'">You picked red color</p>
+    <p *ngSwitchCase="'green'">You picked green color</p>
+    <p *ngSwitchCase="'blue'">You picked blue color</p>
+    <p *ngSwitchCase="'black'">You picked black color</p>
+  </div>
+
+</div>

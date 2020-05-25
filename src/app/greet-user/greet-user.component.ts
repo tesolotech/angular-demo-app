@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { GreetUserService } from '../greet-user.service';
-import { GreetUser } from '../greet-user';
+// import { GreetUserService } from '../greet-user.service';
+// import { GreetUser } from '../greet-user';
+
+import { GreetUser } from '../core/models/greet-user';
+import { GreetUserService } from '../core/services/greet-user.service';
 
 @Component({
   selector: 'app-greet-user',
@@ -9,15 +12,24 @@ import { GreetUser } from '../greet-user';
 })
 export class GreetUserComponent implements OnInit {
 
-  message: GreetUser = {message: ''};
-  error: string;
+    public colorName = 'black';
+    public DisplayPermision = false;
+    public TableHeader = ["mobile","createdAt","updatedAt"];
+    public UserList: {};
+    public inputValue = '';
+    message: GreetUser = {message: ''};
+    error: string;
   constructor(private greetUserService: GreetUserService) { }
 
   ngOnInit() {
     this.greetUserService.getMessage().subscribe(
-      (data: GreetUser) => {this.message = data; console.log(data)},
+      (data: GreetUser) => {this.message = data; console.log(data) },
       error => this.error = error
     );
+
+    // Get all user
+    this.greetUserService.GetAllUser().subscribe(data => {this.UserList = data; }),
+    error =>this.error = error
   }
 
 }

@@ -1,0 +1,17 @@
+<p>
+  department-list works!
+</p>
+
+<div class="col-sm-4">
+  <h2>Department List</h2>
+  <ul class="list-group">
+    <li (click)="getDetails(depart.id)" class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let depart of DepartmentLists;">
+      <span class="badge badge-primary badge-pill">{{depart.id}}</span>
+      {{depart.name}}
+
+    </li>
+
+  </ul>
+</div>
+
+
