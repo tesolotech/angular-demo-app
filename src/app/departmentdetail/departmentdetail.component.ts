@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartmentdetailService } from '../core/services/departmentdetail.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute , ParamMap} from '@angular/router';
 
 @Component({
   selector: 'app-departmentdetail',
@@ -10,15 +10,26 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DepartmentdetailComponent implements OnInit {
 
   public detailSets = {};
-  constructor(private departDetailService: DepartmentdetailService, private router: ActivatedRoute) { }
+  public DepartmentId: number;
+  constructor(private departDetailService: DepartmentdetailService, private route: ActivatedRoute, private router: Router ) { }
 
   ngOnInit() {
-    const id = this.router.snapshot.paramMap.get('id');
-    console.log(id);
-    this.departDetailService.GetDepartmentDetailById(id).subscribe(detail => {
+      this.route.paramMap.subscribe((param: ParamMap) => {
+          this.DepartmentId = parseInt(param.get('id'));
+      });
+
+      this.departDetailService.GetDepartmentDetailById(this.DepartmentId).subscribe(detail => {
       this.detailSets = detail;
       console.log(this.detailSets);
     });
+  }
+  goPrevoius() {
+    const previous = this.DepartmentId - 1;
+    this.router.navigate(['/demartment', previous - 1]);
+  }
+  goNext() {
+    const next = this.DepartmentId + 1;
+    this.router.navigate(['/demartment', next]);
   }
 
 }

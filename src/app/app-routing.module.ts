@@ -8,12 +8,12 @@ import { DepartmentdetailComponent } from './departmentdetail/departmentdetail.c
 
 
 const routes: Routes = [
-  {path: '',redirectTo: '/greetUser', pathMatch: 'full'},
+  {path: '', redirectTo: '/greetUser', pathMatch: 'full'},
   { path: 'greetUser', component: GreetUserComponent },
   { path: 'demartments', component: DepartmentListComponent },
   { path: 'demartment/:id', component: DepartmentdetailComponent },
   { path: 'employee', component: EmployeeListComponent },
-  { path: "**", component: PageNotFoundComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
