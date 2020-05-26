@@ -11,24 +11,27 @@ export class DepartmentdetailComponent implements OnInit {
 
   public detailSets = {};
   public DepartmentId: number;
-  constructor(private departDetailService: DepartmentdetailService, private route: ActivatedRoute, private router: Router ) { }
+  constructor(private departDetailService: DepartmentdetailService, private route: ActivatedRoute, private router: Router ) {  }
 
   ngOnInit() {
       this.route.paramMap.subscribe((param: ParamMap) => {
           this.DepartmentId = parseInt(param.get('id'));
+
+          //call service methods
+          this.departDetailService.GetDepartmentDetailById(this.DepartmentId).subscribe(detail => {
+            this.detailSets = detail;
+
+          });
+
       });
 
-      this.departDetailService.GetDepartmentDetailById(this.DepartmentId).subscribe(detail => {
-      this.detailSets = detail;
-      console.log(this.detailSets);
-    });
   }
   goPrevoius() {
-    const previous = this.DepartmentId - 1;
-    this.router.navigate(['/demartment', previous - 1]);
+    let previous = (this.DepartmentId - 1);
+    this.router.navigate(['/demartment', previous]);
   }
   goNext() {
-    const next = this.DepartmentId + 1;
+    let next = this.DepartmentId + 1;
     this.router.navigate(['/demartment', next]);
   }
 
