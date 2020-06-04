@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DepartmentdetailService } from '../core/services/departmentdetail.service';
 import { Router, ActivatedRoute , ParamMap} from '@angular/router';
 
@@ -9,6 +9,7 @@ import { Router, ActivatedRoute , ParamMap} from '@angular/router';
 })
 export class DepartmentdetailComponent implements OnInit {
 
+//  @Input() inputValues;
   public detailSets = {};
   public DepartmentId: number;
   constructor(private departDetailService: DepartmentdetailService, private route: ActivatedRoute, private router: Router ) {  }
@@ -17,7 +18,7 @@ export class DepartmentdetailComponent implements OnInit {
       this.route.paramMap.subscribe((param: ParamMap) => {
           this.DepartmentId = parseInt(param.get('id'));
 
-          //call service methods
+          // call service methods
           this.departDetailService.GetDepartmentDetailById(this.DepartmentId).subscribe(detail => {
             this.detailSets = detail;
 

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class DepartmentListComponent implements OnInit {
 
+  inputValue = "this is parent value"
   public DepartmentLists = {};
   constructor(private DepartService: DepartmentService, private router: Router) { }
 

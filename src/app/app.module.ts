@@ -4,12 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GreetUserComponent } from './greet-user/greet-user.component';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DepartmentdetailComponent } from './departmentdetail/departmentdetail.component';
 import { EmployeeService } from './core/services/employee.service';
 import { DepartmentdetailService } from './core/services/departmentdetail.service';
 import { DepartmentService } from './core/services/department.service';
+import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +19,17 @@ import { DepartmentService } from './core/services/department.service';
     GreetUserComponent,
     routingComponent,
     PageNotFoundComponent,
-    DepartmentdetailComponent
+    DepartmentdetailComponent,
+    CreateEmployeeComponent,
+    ReactiveFormComponent
   ],
   imports: [
 
   BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [EmployeeService, DepartmentdetailService, DepartmentService ],
   bootstrap: [AppComponent]

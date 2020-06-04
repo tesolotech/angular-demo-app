@@ -5,6 +5,8 @@ import { DepartmentListComponent } from './department-list/department-list.compo
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DepartmentdetailComponent } from './departmentdetail/departmentdetail.component';
+import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 
 const routes: Routes = [
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'demartments', component: DepartmentListComponent },
   { path: 'demartment/:id', component: DepartmentdetailComponent },
   { path: 'employee', component: EmployeeListComponent },
+  { path: 'employee-form', component: CreateEmployeeComponent },
+  { path: 'reactive-form', component: ReactiveFormComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
