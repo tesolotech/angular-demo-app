@@ -24,8 +24,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
     ReactiveFormComponent
   ],
   imports: [
-
-  BrowserModule,
+    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
